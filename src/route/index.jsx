@@ -1,17 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Login from "../pages/login.jsx";
-import Register from "../pages/register.jsx";
-import Dashboard from "../pages/dashboard.jsx";
-import NotFound from "../pages/404notfound.jsx";
+import DashboardUser from "@/pages/dashboard/dashboarUser/dashboardUser";
+import NotFound from "@/pages/404notfound";
+import Login from "@/pages/login";
+import Register from "@/pages/register";
 
 export default function Route() {
     const router = createBrowserRouter(
         [
-            { path: "*", element: <NotFound /> },
             { path: "/", element: <Login /> },
+            { path: "*", element: <NotFound /> },
             { path: "/register", element: <Register /> },
-            { path: "/dashboard", element: <Dashboard /> },
+            { path: "/dashboard/user", element: <DashboardUser /> },
+            // { path: "/dashboard/product", element: <DashboardProduct /> },
         ]
     );
     return <RouterProvider router={router} />;

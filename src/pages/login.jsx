@@ -1,46 +1,105 @@
-import Navbar from "../components/navbar";
-import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Link } from "react-router-dom";
 
 const loginSchema = z.object({
-    username: z.string()
-        .min(1, "Email / Username wajib diisi.").refine(
+    identifier: z
+        .string()
+        .min(1, "Username atau Email wajib diisi")
+        .refine(
             (val) => /\S+@\S+\.\S+/.test(val) || val.length >= 5,
-            "Jika berupa email → harus sesuai format email valid. Jika berupa username → minimal 5 karakter."
+            "Masukkan username (min 5 karakter) atau email valid"
         ),
-    password: z.string()
-        .min(1, "Password wajib diisi.").min(6, "Password minimal 6 karakter."),
+    password: z
+        .string()
+        .min(1, "Password wajib diisi")
+        .min(6, "Password minimal 6 karakter"),
 });
 
 function Login() {
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: zodResolver(loginSchema)
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: zodResolver(loginSchema),
+        mode: "onChange",
+        reValidateMode: "onBlur",
     });
 
-    const Navigate = useNavigate();
+    const onSubmit = (data) => {
+        console.log(data);
+    };
+
     return (
         <>
-            <div className="flex flex-col justify-center items-center pt-30 bg-blue-800 h-screen">
-                <h1 className="text-5xl text-white pb-1"> LOGIN</h1>
-                <form onSubmit={handleSubmit()} className="bg-white p-10 rounded-lg text-white">
-                    <div className="p-2" >
-                        <p className="text-gray-600">Email / Username</p>
-                        <input type="text" className="border rounded border-blue-800 text-black w-full" {...register("username")} />
-                        {errors.username && <p className="text-red-400">{errors.username.message}</p>}
-                    </div>
-                    <div className="p-2">
-                        <p className="text-gray-600">Password</p>
-                        <input type="password" className="border rounded border-blue-800 text-black w-full" {...register("password")} />
-                        {errors.password && <p className="text-red-400">{errors.password.message}</p>}
-                    </div>
-                    <div className="p-2">
-                        <button type="submit" className="rounded p-1 bg-blue-600 w-full">Login</button>
-                    </div>
-                </form>
+            <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-blue-200">
+                <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+                    <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+                        Login ke Akun Anda
+                    </h2>
+
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                        {/* Username / Email */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                Username / Email
+                            </label>
+                            <input
+                                type="text"
+                                {...register("identifier")}
+                                className="w-full border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                placeholder="Masukkan username atau email"
+                            />
+                            {errors.identifier && (
+                                <p className="text-red-600 text-sm mt-1">
+                                    {errors.identifier.message}
+                                </p>
+                            )}
+                        </div>
+
+                        {/* Password */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                Password
+                            </label>
+                            <input
+                                type="password"
+                                {...register("password")}
+                                className="w-full border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                                placeholder="Masukkan password"
+                            />
+                            {errors.password && (
+                                <p className="text-red-600 text-sm mt-1">
+                                    {errors.password.message}
+                                </p>
+                            )}
+                        </div>
+
+                        {/* Tombol Login */}
+                        <button
+                            type="submit"
+                            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition"
+                        >
+                            Login
+                        </button>
+                    </form>
+
+                    {/* Link Register */}
+                    <p className="mt-6 text-center text-gray-600 text-sm">
+                        Belum punya akun?{" "}
+                        <Link
+                            to="/register"
+                            className="text-blue-500 hover:text-blue-600 font-medium"
+                        >
+                            Daftar di sini
+                        </Link>
+                    </p>
+                </div>
             </div>
         </>
-    )
+    );
 }
+
 export default Login;
