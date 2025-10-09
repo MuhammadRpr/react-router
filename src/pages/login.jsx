@@ -33,72 +33,75 @@ function Login() {
     };
 
     return (
-        <>
-            <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-blue-200">
-                <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-                    <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-                        Login ke Akun Anda
-                    </h2>
+        <div className="flex items-center justify-center min-h-screen bg-orange-50">
+            <div className="w-full max-w-md bg-white rounded-sm shadow-xl p-8 border border-orange-100">
+                {/* Header */}
+                <h2 className="text-2xl font-bold text-center mb-2">
+                    Selamat Datang
+                </h2>
+                <p className="text-center mb-6 text-sm">
+                    Silakan masuk untuk melanjutkan ke dashboard Anda
+                </p>
 
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                        {/* Username / Email */}
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
-                                Username / Email
-                            </label>
-                            <input
-                                type="text"
-                                {...register("identifier")}
-                                className="w-full border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                                placeholder="Masukkan username atau email"
-                            />
-                            {errors.identifier && (
-                                <p className="text-red-600 text-sm mt-1">
-                                    {errors.identifier.message}
-                                </p>
-                            )}
-                        </div>
+                {/* Form */}
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                    {/* Username / Email */}
+                    <div>
+                        <label className="block text-sm font-medium mb-1">
+                            Username / Email
+                        </label>
+                        <input
+                            type="text"
+                            {...register("identifier")}
+                            className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-orange-400 focus:outline-none transition"
+                            placeholder="Masukkan username atau email"
+                        />
+                        {errors.identifier && (
+                            <p className="text-red-600 text-sm mt-1">
+                                {errors.identifier.message}
+                            </p>
+                        )}
+                    </div>
 
-                        {/* Password */}
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
-                                Password
-                            </label>
-                            <input
-                                type="password"
-                                {...register("password")}
-                                className="w-full border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                                placeholder="Masukkan password"
-                            />
-                            {errors.password && (
-                                <p className="text-red-600 text-sm mt-1">
-                                    {errors.password.message}
-                                </p>
-                            )}
-                        </div>
+                    {/* Password */}
+                    <div>
+                        <label className="block text-sm font-medium mb-1">
+                            Password
+                        </label>
+                        <input
+                            type="password"
+                            {...register("password")}
+                            className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-orange-400 focus:outline-none transition"
+                            placeholder="Masukkan password"
+                        />
+                        {errors.password && (
+                            <p className="text-red-600 text-sm mt-1">
+                                {errors.password.message}
+                            </p>
+                        )}
+                    </div>
 
-                        {/* Tombol Login */}
-                        <button
-                            type="submit"
-                            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition"
-                        >
-                            Login
-                        </button>
-                    </form>
+                    {/* Tombol Login */}
+                    <button
+                        type="submit"
+                        className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300 shadow-md"
+                    >
+                        Login
+                    </button>
+                </form>
 
-                    {/* Link Register */}
-                    <p className="mt-6 text-center text-gray-600 text-sm">
-                        Belum punya akun?{" "}
-                        <Link
-                            to="/register"
-                            className="text-blue-500 hover:text-blue-600 font-medium"
-                        >
-                            Daftar di sini
-                        </Link>
-                    </p>
-                </div>
+                {/* Link Register */}
+                <p className="mt-6 text-center text-sm">
+                    Belum punya akun?{" "}
+                    <Link
+                        to="/register"
+                        className="text-orange-600 hover:text-orange-700 font-medium transition"
+                    >
+                        Daftar di sini
+                    </Link>
+                </p>
             </div>
-        </>
+        </div>
     );
 }
 
