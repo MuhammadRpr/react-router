@@ -7,7 +7,7 @@ export default function Sidebar() {
 
     return (
         <aside
-            className={`${isOpen ? "w-64" : "w-20"} bg-orange-600 text-white h-screen p-5 pt-8 relative duration-300`}
+            className={`${isOpen ? "w-51" : "w-20"} bg-orange-600 text-white h-screen p-5 pt-12 relative duration-300`}
         >
             <nav>
                 {/* Dashboard + Toggle Button */}
