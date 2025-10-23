@@ -82,7 +82,7 @@ function AddUser() {
 
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-                        {/* Fullname */}
+
                         <FormField
                             control={form.control}
                             name="fullname"
@@ -101,7 +101,7 @@ function AddUser() {
                             )}
                         />
 
-                        {/* Username */}
+
                         <FormField
                             control={form.control}
                             name="username"
@@ -120,7 +120,7 @@ function AddUser() {
                             )}
                         />
 
-                        {/* Password */}
+
                         <FormField
                             control={form.control}
                             name="password"
@@ -140,7 +140,7 @@ function AddUser() {
                             )}
                         />
 
-                        {/* Email */}
+
                         <FormField
                             control={form.control}
                             name="email"
@@ -159,7 +159,7 @@ function AddUser() {
                             )}
                         />
 
-                        {/* Phone */}
+
                         <FormField
                             control={form.control}
                             name="phone_number"
@@ -178,7 +178,7 @@ function AddUser() {
                             )}
                         />
 
-                        {/* Age */}
+
                         <FormField
                             control={form.control}
                             name="age"
@@ -197,7 +197,7 @@ function AddUser() {
                             )}
                         />
 
-                        {/* Address */}
+
                         <FormField
                             control={form.control}
                             name="address"
@@ -216,7 +216,7 @@ function AddUser() {
                             )}
                         />
 
-                        {/* Submit Button */}
+
                         <Button
                             type="submit"
                             className="w-full bg-gradient-to-r from-orange-500 to-amber-400 hover:from-orange-600 hover:to-amber-500 text-white font-semibold py-2.5 rounded-lg shadow-md transition-all"
