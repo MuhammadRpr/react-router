@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { deleteUser } from "../../../../utils/api/users";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export const columns = [
     {
@@ -50,6 +51,8 @@ export const columns = [
         header: "Aksi",
         cell: ({ row }) => {
             const id = row.original.id;
+            const navigate = useNavigate();
+
 
             // handler delete user
 
@@ -67,7 +70,7 @@ export const columns = [
                 <div className="flex gap-3">
                     {/* Button Info */}
                     <button
-                        onClick={() => console.log("Ini Button Info")}
+                        onClick={() => navigate(`/dashboard/user/detail/${id}`)}
                         className="p-2 rounded-xl transition-all duration-200 hover:scale-110"
                     >
                         <Info size={20} className="text-blue-500" />

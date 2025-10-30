@@ -5,6 +5,8 @@ import NotFound from "@/pages/404notfound";
 import Login from "@/pages/login";
 import Register from "@/pages/register";
 import AddUser from "@/pages/dashboard/dashboarUser/addUser";
+import DetailUser from "@/pages/dashboard/dashboarUser/detailUser";
+
 
 
 
@@ -16,6 +18,7 @@ export default function Route() {
             { path: "/register", element: <Register /> },
             { path: "/dashboard/user", element: <DashboardUser /> },
             { path: "/dashboard/user/add", element: <AddUser /> },
+            { path: "/dashboard/user/detail/:id", element: <DetailUser /> },
             // { path: "/dashboard/product", element: <DashboardProduct /> },
         ]
     );
